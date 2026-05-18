@@ -87,7 +87,7 @@ export function useStoryScroll({
       });
 
       // 3. Animaciones de entrada personalizadas (opcionales)
-      if (onEnter) onEnter(ctx, container);
+      
 
     });
 

@@ -2,19 +2,24 @@
 
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useAnimations";
-import { staggerContainer, fadeUp, fadeLeft, fadeRight } from "@/lib/animations";
+import {
+  staggerContainer,
+  fadeUp,
+  fadeLeft,
+  fadeRight,
+} from "@/lib/animations";
 
 const skills = {
-  "Frontend": ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3"],
-  "Estilos": ["Tailwind CSS", "SCSS/Sass", "Framer Motion", "GSAP"],
-  "Herramientas": ["Git", "Figma", "Vite", "Webpack", "VS Code"],
-  "Backend básico": ["Node.js", "REST APIs", "Supabase", "Firebase"],
+  Frontend: ["React", "Next.js", "React Native", "TypeScript", "JavaScript"],
+  Estilos: ["Tailwind CSS", "SCSS/Sass", "Framer Motion", "GSAP"],
+  Herramientas: ["Git", "GitHub", "Figma", "VS Code"],
+  "Backend básico": ["Node.js", "REST APIs", "Firebase"],
 };
 
 const stats = [
-  { value: "2+",  label: "Años de experiencia" },
-  { value: "10+", label: "Proyectos completados" },
-  { value: "5+",  label: "Tecnologías dominadas" },
+  { value: "1+", label: "Años aprendiendo" },
+  { value: "5+", label: "Proyectos completados" },
+  { value: "5+", label: "Tecnologías utilizadas" },
 ];
 
 export function AboutSection() {
@@ -22,9 +27,8 @@ export function AboutSection() {
   const { ref: contentRef, controls: contentControls } = useScrollReveal(0.1);
 
   return (
-    <section id="about" className="section-padding relative border-b">
+    <section id="about" className="section-padding relative ">
       <div className="container-apple">
-
         {/* Section label */}
         <motion.div
           ref={titleRef}
@@ -33,10 +37,16 @@ export function AboutSection() {
           animate={titleControls}
           className="mb-16"
         >
-          <motion.p variants={fadeUp} className="font-mono text-neon-cyan text-sm tracking-widest uppercase mb-3">
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-neon-cyan text-sm tracking-widest uppercase mb-3"
+          >
             01. sobre mí
           </motion.p>
-          <motion.h2 variants={fadeUp} className="font-display text-5xl md:text-6xl font-bold text-text-primary">
+          <motion.h2
+            variants={fadeUp}
+            className="font-display text-5xl md:text-6xl font-bold text-text-primary"
+          >
             Quién soy
           </motion.h2>
         </motion.div>
@@ -52,26 +62,37 @@ export function AboutSection() {
           {/* Bio */}
           <motion.div variants={fadeLeft} className="space-y-5">
             <p className="text-text-secondary text-lg leading-relaxed">
-              Soy un <span className="text-text-primary font-medium">Frontend Developer</span> de
-              Colombia con pasión por construir experiencias digitales que combinen
-              estética, rendimiento y usabilidad.
+              Soy un{" "}
+              <span className="text-text-primary font-medium">
+                Frontend & Mobile Developer
+              </span>{" "}
+              enfocado en construir experiencias digitales modernas que combinen
+              diseño, rendimiento y usabilidad.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed">
-              Me especializo en React y el ecosistema Next.js, con un ojo para el
-              diseño y una obsesión por los <span className="text-neon-cyan">detalles visuales</span>.
-              Me inspiran las interfaces de Apple y la energía visual del neon-futurismo.
+              Trabajo principalmente con React, Next.js y TypeScript,
+              desarrollando{" "}
+              <span className="text-neon-cyan">
+                interfaces escalables, interactivas y centradas en la
+                experiencia del usuario
+              </span>
+              . Disfruto crear aplicaciones donde la estética visual y la
+              arquitectura frontend trabajen juntas de forma fluida.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed">
-              Cuando no estoy programando, estoy explorando nuevas técnicas de animación,
-              jugando con Three.js o aprendiendo sobre diseño de sistemas.
+              Me interesa especialmente el desarrollo de interfaces modernas, animaciones web, experiencias multiplataforma y la construcción de productos digitales mantenibles con una fuerte atención al detalle.
             </p>
 
             {/* Stats */}
             <div className="flex gap-8 pt-4">
               {stats.map(({ value, label }) => (
                 <div key={label} className="text-center">
-                  <p className="font-display text-3xl font-bold text-gradient-cyan">{value}</p>
-                  <p className="text-text-muted text-xs mt-1 max-w-[80px] leading-tight">{label}</p>
+                  <p className="font-display text-3xl font-bold text-gradient-cyan">
+                    {value}
+                  </p>
+                  <p className="text-text-muted text-xs mt-1 max-w-[80px] leading-tight">
+                    {label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -92,7 +113,11 @@ export function AboutSection() {
                                  border border-white/5 hover:border-neon-cyan/25 hover:text-text-primary
                                  transition-all duration-200 cursor-default"
                       whileHover={{ scale: 1.04, y: -2 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 20,
+                      }}
                     >
                       {skill}
                     </motion.span>

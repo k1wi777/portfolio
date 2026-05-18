@@ -7,17 +7,27 @@ import { staggerContainer, fadeUp, scaleIn } from "@/lib/animations";
 
 const education = [
   {
-    degree: "Ingeniería / Tecnología en Sistemas",
-    institution: "Tu Universidad",
-    period: "2022 — Presente",
-    description: "Formación en desarrollo de software, algoritmos, bases de datos y sistemas distribuidos.",
+    degree: "Ingeniería de Sistemas",
+
+    institution: "Universidad de Córdoba",
+
+    period: "2023 — Presente",
+
+    description:
+      "Formación en desarrollo de software, estructuras de datos, programación orientada a objetos y arquitectura de sistemas, complementada con proyectos prácticos enfocados en frontend, simulación y aplicaciones multiplataforma.",
+
     color: "#bf5af2",
   },
   {
-    degree: "Desarrollo Web Full Stack",
-    institution: "Plataforma / Bootcamp",
-    period: "2023",
-    description: "Especialización en tecnologías modernas web: React, Node.js, bases de datos y despliegue.",
+    degree: "Aprendizaje autodidacta",
+
+    institution: "Frontend, Motion & UI Engineering",
+
+    period: "2024 — Presente",
+
+    description:
+      "Exploración continua de tecnologías frontend modernas, animaciones avanzadas, experiencia de usuario y desarrollo multiplataforma mediante proyectos personales y construcción de productos digitales.",
+
     color: "#00f5ff",
   },
 ];
@@ -33,14 +43,24 @@ export function EducationSection() {
           variants={staggerContainer}
           initial="hidden"
           animate={controls}
-          className="mb-16"
+          className="mb-10"
         >
-          <motion.p variants={fadeUp} className="font-mono text-neon-cyan text-sm tracking-widest uppercase mb-3">
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-neon-cyan text-sm tracking-widest uppercase mb-3"
+          >
             04. estudios
           </motion.p>
-          <motion.h2 variants={fadeUp} className="font-display text-5xl md:text-6xl font-bold text-text-primary">
+          <motion.h2
+            variants={fadeUp}
+            className="font-display text-5xl md:text-6xl font-bold text-text-primary"
+          >
             Formación
           </motion.h2>
+          <motion.p>
+            Mi formación académica y el aprendizaje práctico que ha impulsado mi
+            evolución como desarrollador frontend y mobile.
+          </motion.p>
         </motion.div>
 
         <motion.div
@@ -60,21 +80,40 @@ export function EducationSection() {
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                style={{ backgroundColor: edu.color + "20", border: `1px solid ${edu.color}30` }}
+                style={{
+                  backgroundColor: edu.color + "20",
+                  border: `1px solid ${edu.color}30`,
+                }}
               >
                 {/* Graduation cap icon */}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={edu.color} strokeWidth="2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={edu.color}
+                  strokeWidth="2"
+                >
                   <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                   <path d="M6 12v5c3 3 9 3 12 0v-5" />
                 </svg>
               </div>
 
-              <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: edu.color + "cc" }}>
+              <p
+                className="font-mono text-xs uppercase tracking-widest mb-2"
+                style={{ color: edu.color + "cc" }}
+              >
                 {edu.period}
               </p>
-              <h3 className="font-display text-xl font-bold text-text-primary mb-1">{edu.degree}</h3>
-              <p className="text-neon-cyan/70 text-sm mb-3">{edu.institution}</p>
-              <p className="text-text-secondary text-sm leading-relaxed">{edu.description}</p>
+              <h3 className="font-display text-xl font-bold text-text-primary mb-1">
+                {edu.degree}
+              </h3>
+              <p className="text-neon-cyan/70 text-sm mb-3">
+                {edu.institution}
+              </p>
+              <p className="text-text-secondary text-sm leading-relaxed">
+                {edu.description}
+              </p>
             </motion.div>
           ))}
         </motion.div>
