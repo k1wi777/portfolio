@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, MutableRefObject } from "react";
-import { useInView, useAnimation, AnimationControls } from "framer-motion";
+import { useInView, useAnimation } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,11 +19,7 @@ if (typeof window !== "undefined") {
  * const { ref, controls } = useScrollReveal();
  * <motion.div ref={ref} animate={controls} initial="hidden" variants={fadeUpVariants} />
  */
-export function useScrollReveal(threshold = 0.2): {
-  ref: MutableRefObject<null>;
-  controls: AnimationControls;
-  isInView: boolean;
-} {
+export function useScrollReveal(threshold = 0.2) {
   const ref = useRef(null);
   const controls = useAnimation();
   const isInView = useInView(ref, { once: true, amount: threshold });
