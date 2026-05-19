@@ -34,6 +34,9 @@ export const metadata: Metadata = {
   },
   description:
     "Frontend Developer especializado en interfaces modernas, animaciones y experiencias digitales únicas.",
+  icons: {
+    icon: "/JP-icono.svg",
+  },
   keywords: ["Frontend Developer", "React", "Next.js", "TypeScript", "UI/UX"],
   authors: [{ name: "jose padilla" }],
   openGraph: {
@@ -71,9 +74,7 @@ export default function RootLayout({
     >
       <body>
         {/* Lenis smooth scroll wraps everything */}
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );
