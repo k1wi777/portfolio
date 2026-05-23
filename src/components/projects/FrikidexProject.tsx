@@ -83,14 +83,14 @@ export function FrikidexProject() {
           alt="Frikidex hero"
           width={1200}
           height={800}
-          className="w-[80%] pointer-events-none object-cover opacity-50 absolute top-35 right-0 rounded-3xl mask-l-from-60% mask-l-to-90% mask-r-from-80% mask-b-from-90% mask-t-from-95% z-10"
+          className="w-[80%]  object-cover opacity-50 absolute top-35 right-0 rounded-3xl mask-l-from-60% mask-l-to-90% mask-r-from-80% mask-b-from-90% mask-t-from-95% z-10 pointer-events-none"
         />
         <ProjectHero
           number="01"
           title="Frikidex"
           category="Web Responsive"
           tagline="La Pokédex que siempre quisiste tener."
-          description="Pokédex interactiva construida para explorar consumo de APIs y renderizado dinámico en React. Búsqueda en tiempo real, filtrado por tipo y estadísticas animadas."
+          description="Web interactiva diseñada para centralizar información del universo Pokémon en una experiencia agradable. Con búsqueda en tiempo real, filtrado inteligente y más..."
           color={COLOR}
           url="https://frikidex.vercel.app/"
           repo="https://github.com/k1wi777/my-Pokedex"

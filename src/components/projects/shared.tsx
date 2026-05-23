@@ -36,11 +36,9 @@ const TECH_ICONS: Record<string, string> = {
   Java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
   Vite: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
   Expo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg",
-  Zustand:
-    "https://raw.githubusercontent.com/pmndrs/zustand/main/examples/demo/public/icon.png",
-  JWT: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jsonwebtokens/jsonwebtokens-original.svg",
-  "REST APIs":
-    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+  Zustand: "https://cdn.jsdelivr.net/npm/zustand@4.3.9/README/favicon.ico",
+  JWT: "https://jwt.io/img/pic_logo.svg",
+  "REST APIs": "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
   PokéAPI:
     "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png",
   "Three.js":
