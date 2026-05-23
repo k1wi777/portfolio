@@ -11,15 +11,119 @@ const TECH = [
   "Three.js", "React Three Fiber", "Tailwind CSS",
 ];
 
-// Para el portfolio usamos un layout diferente — código + preview horizontal
 const PREVIEWS = [
-  { src: "https://picsum.photos/seed/port1/1200/700", alt: "Portfolio hero section" },
-  { src: "https://picsum.photos/seed/port2/1200/700", alt: "Portfolio proyectos" },
-  { src: "https://picsum.photos/seed/port3/1200/700", alt: "Portfolio contacto" },
+  { src: "/projects/portfolio/portfolio1.png", alt: "Portfolio hero section" },
+  { src: "/projects/portfolio/portfolio2.gif", alt: "Portfolio proyectos" },
+  { src: "/projects/portfolio/portfolio3.png", alt: "Portfolio contacto" },
 ];
 
-// Snippet de código decorativo
-const CODE_SNIPPET = `// Scroll storytelling
+// ─── Syntax highlighter manual ────────────────────────────────────────────────
+function highlight(code: string, accentColor: string): string {
+  return code
+    // comentarios
+    .replace(/(\/\/.+)/g,           `<span style="color:#4a4a6a;font-style:italic">$1</span>`)
+    // keywords
+    .replace(/\b(const|let|if|return|new|true|false|null|undefined|void|async|await|=>)\b/g,
+                                    `<span style="color:${accentColor}dd">$1</span>`)
+    // funciones llamadas  word(
+    .replace(/\b([a-zA-Z_$][\w$]*)\s*(?=\()/g,
+                                    `<span style="color:#00f5ff">$1</span>`)
+    // strings
+    .replace(/(['"`])([^'"`\n]*)\1/g,
+                                    `<span style="color:#30d158">$1$2$1</span>`)
+    // números
+    .replace(/\b(\d+\.?\d*)\b/g,   `<span style="color:#ff9f0a">$1</span>`)
+    // propiedades de objeto  word:
+    .replace(/\b([\w]+)(?=\s*:(?!:))/g,
+                                    `<span style="color:#00f5ffaa">$1</span>`)
+    // tipos TS  : Word / <Word>
+    .replace(/(?<=:\s*)([A-Z][\w]*)/g,
+                                    `<span style="color:#ffd60a">$1</span>`)
+    // puntuación  { } ( ) [ ] ; ,
+    .replace(/([{}()[\];,])/g,      `<span style="color:#52525b">$1</span>`);
+}
+
+// ─── Editor card ──────────────────────────────────────────────────────────────
+function CodeCard({
+  filename,
+  code,
+  accentColor,
+  delay = 0,
+}: {
+  filename: string;
+  code: string;
+  accentColor: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay }}
+      className="rounded-2xl overflow-hidden"
+      style={{
+        background: "#080810",
+        border: `1px solid ${accentColor}20`,
+        boxShadow: `0 0 60px ${accentColor}06, 0 20px 60px rgba(0,0,0,0.5)`,
+      }}
+    >
+      {/* Titlebar */}
+      <div
+        className="flex items-center gap-2 px-4 py-3"
+        style={{ borderBottom: `1px solid ${accentColor}12`, background: "#06060e" }}
+      >
+        {["#ff375f", "#ffcc00", "#30d158"].map((c) => (
+          <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
+        ))}
+        {/* Tabs decorativas */}
+        <div className="flex items-center gap-1 ml-4">
+          <span
+            className="px-3 py-1 rounded-t text-xs font-mono"
+            style={{
+              background: `${accentColor}12`,
+              color: accentColor,
+              borderBottom: `1px solid ${accentColor}`,
+            }}
+          >
+            {filename}
+          </span>
+        </div>
+        {/* Línea de estado git decorativa */}
+        <div className="ml-auto flex items-center gap-2">
+          <span className="text-[10px] font-mono" style={{ color: "#30d15870" }}>● main</span>
+          <span className="text-[10px] font-mono" style={{ color: "#52525b" }}>TypeScript</span>
+        </div>
+      </div>
+
+      {/* Números de línea + código */}
+      <div className="flex overflow-x-auto">
+        {/* Líneas */}
+        <div
+          className="select-none pt-4 pb-4 pl-3 pr-3 text-right"
+          style={{ color: "#2a2a3a", fontSize: "11px", lineHeight: "1.75", minWidth: "40px", borderRight: `1px solid ${accentColor}08` }}
+        >
+          {code.split("\n").map((_, i) => (
+            <div key={i}>{i + 1}</div>
+          ))}
+        </div>
+
+        {/* Código */}
+        <pre
+          className="p-4 text-[10px] leading-5 font-mono flex-1 overflow-x-auto"
+          style={{ color: "#a1a1aa" }}
+        >
+          <code
+            dangerouslySetInnerHTML={{ __html: highlight(code, accentColor) }}
+          />
+        </pre>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Snippets ─────────────────────────────────────────────────────────────────
+const SNIPPET_SCROLL = `// Scroll storytelling
 const { containerRef, contentRef } = useStoryScroll({
   heightVh: 200,
   onEnter: (container) => {
@@ -31,7 +135,7 @@ const { containerRef, contentRef } = useStoryScroll({
     });
   },
 });
-
+ 
 // 3D sphere reacts to scroll
 useFrame((state) => {
   const sp = scrollProgress;
@@ -39,10 +143,34 @@ useFrame((state) => {
   mat.color.setHSL(185/360 + sp * 0.26, 1, 0.55);
 });`;
 
+const SNIPPET_SPHERE = `// Esfera 3D reactiva al scroll y al mouse
+useFrame((state) => {
+  const t  = state.clock.getElapsedTime();
+  const sp = scrollProgress; // 0 → 1
+
+  // Lerp del mouse para suavizar
+  lerpMouse.x += (mouse.x - lerpMouse.x) * 0.04;
+  lerpMouse.y += (mouse.y - lerpMouse.y) * 0.04;
+
+  // Rotación + influencia del mouse
+  mesh.rotation.x = t * 0.15 + lerpMouse.y * 0.3;
+  mesh.rotation.y = t * 0.25 + lerpMouse.x * 0.3;
+
+  // Distorsión y color interpolados con scroll
+  mat.distort = 0.3 + Math.sin(sp * Math.PI) * 0.6;
+  const hue = 185 / 360 + sp * 0.26; // cyan → purple
+  mat.color.setHSL(hue, 1, 0.55);
+});`;
+
 export function PortfolioProject() {
   const codeRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: codeRef, offset: ["start end", "end start"] });
-  const codeY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const { scrollYProgress } = useScroll({
+    target: codeRef,
+    offset: ["start end", "end start"],
+  });
+  // Las dos cards se mueven a velocidades distintas → profundidad
+  const y1 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [80, -20]);
 
   return (
     <div id="project-portfolio">
@@ -59,9 +187,9 @@ export function PortfolioProject() {
 
       <ProjectInfo
         color={COLOR}
-        what="Crear un espacio personal que demostrara habilidades técnicas y de diseño simultáneamente, experimentando con técnicas avanzadas de animación."
-        how="Scroll storytelling con GSAP ScrollTrigger, esfera 3D reactiva al scroll y al mouse con React Three Fiber, text scramble y glassmorphism."
-        result="Experiencia visual inmersiva que combina rendimiento y estética. La esfera 3D cambia de color y forma a medida que el usuario scrollea por el sitio."
+         what="El portfolio de un desarrollador frontend es en sí mismo un proyecto técnico. El reto fue construir un sitio que no solo mostrara mi trabajo, sino que fuera evidencia directa de las capacidades que pretendia comunicar."
+        how="Arquitectura de scroll storytelling con GSAP ScrollTrigger para transiciones entre secciones sin desplazamiento perceptible. Esfera 3D en WebGL con React Three Fiber que interpola geometría, distorsión y color en función del progreso de scroll. Sistema de diseño propio con tokens neon sobre base oscura inspirada en macOS."
+        result="Un sitio donde cada interacción es intencional — desde el scramble de texto en el hero hasta la reacción de la esfera al mouse.Una experiencia que demuestra dominio de animaciónes , 3D en el browser y arquitectura de componentes sin sacrificar rendimiento."
       />
 
       {/* Tech carousel */}
@@ -72,63 +200,42 @@ export function PortfolioProject() {
         <TechCarousel techs={TECH} color={COLOR} />
       </div>
 
-      {/* Layout especial: código a la izquierda, preview a la derecha */}
+      {/* Layout: dos editor cards a la izquierda + previews a la derecha */}
       <div ref={codeRef} className="container-apple py-24">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="font-mono text-xs uppercase tracking-widest mb-10"
+          style={{ color: `${COLOR}70` }}
+        >
+          — bajo el capó
+        </motion.p>
 
-          {/* Snippet de código animado */}
-          <motion.div style={{ y: codeY }}>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="font-mono text-xs uppercase tracking-widest mb-4"
-              style={{ color: `${COLOR}80` }}
-            >
-              — bajo el capó
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="rounded-2xl overflow-hidden"
-              style={{
-                background: "#0d0d1a",
-                border: `1px solid ${COLOR}20`,
-                boxShadow: `0 0 40px ${COLOR}08`,
-              }}
-            >
-              {/* Barra de título tipo editor */}
-              <div
-                className="flex items-center gap-2 px-4 py-3"
-                style={{ borderBottom: `1px solid ${COLOR}15`, background: "#0a0a15" }}
-              >
-                {["#ff375f", "#ffcc00", "#30d158"].map((c) => (
-                  <div key={c} className="w-3 h-3 rounded-full" style={{ background: c }} />
-                ))}
-                <span className="font-mono text-xs ml-2" style={{ color: `${COLOR}50` }}>
-                  useStoryScroll.ts
-                </span>
-              </div>
-              <pre
-                className="p-6 text-xs leading-relaxed overflow-x-auto font-mono"
-                style={{ color: "#a1a1aa" }}
-              >
-                <code
-                  dangerouslySetInnerHTML={{
-                    __html: CODE_SNIPPET
-                      .replace(/\/\/.+/g, (m) => `<span style="color:#52525b">${m}</span>`)
-                      .replace(/\b(const|useFrame|useScroll|Math)\b/g, (m) => `<span style="color:${COLOR}cc">${m}</span>`)
-                      .replace(/\b(opacity|y|stagger|ease|distort|color)\b/g, (m) => `<span style="color:#00f5ff99">${m}</span>`),
-                  }}
-                />
-              </pre>
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+
+          {/* Columna izquierda — dos editor cards con parallax */}
+          <div className="flex flex-col gap-1">
+            <motion.div style={{ y: y1 }}>
+              <CodeCard
+                filename="useStoryScroll.ts"
+                code={SNIPPET_SCROLL}
+                accentColor={COLOR}
+                delay={0}
+              />
             </motion.div>
-          </motion.div>
+            <motion.div style={{ y: y2 }}>
+              <CodeCard
+                filename="SceneBackground.tsx"
+                code={SNIPPET_SPHERE}
+                accentColor={COLOR}
+                delay={0.15}
+              />
+            </motion.div>
+          </div>
 
-          {/* Previews apilados con offset */}
-          <div className="space-y-4 pt-8">
+          {/* Columna derecha — previews apiladas con offset */}
+          <div className="flex flex-col gap-4 pt-6">
             {PREVIEWS.map((img, i) => (
               <motion.div
                 key={i}
@@ -136,14 +243,18 @@ export function PortfolioProject() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="rounded-2xl overflow-hidden"
+                className="rounded-2xl overflow-hidden group"
                 style={{
                   border: `1px solid ${COLOR}20`,
-                  boxShadow: `0 8px 30px rgba(0,0,0,0.4)`,
-                  marginLeft: `${i * 16}px`,
+                  boxShadow: `0 8px 40px rgba(0,0,0,0.4)`,
+                  marginLeft: `${i * 20}px`,
                 }}
               >
-                <img src={img.src} alt={img.alt} className="w-full object-cover" />
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </motion.div>
             ))}
           </div>

@@ -42,9 +42,7 @@ const WEB_IMAGES = [
     src: "/projects/unytick/unytick9.png",
     alt: "Unytick estadísticas",
   },
-  { src: "/projects/unytick/unytick10.png",
-    alt: "Unytick reportes",
-  },
+  { src: "/projects/unytick/unytick10.png", alt: "Unytick reportes" },
   {
     src: "/projects/unytick/unytick11.png",
     alt: "Unytick validación",
@@ -52,32 +50,33 @@ const WEB_IMAGES = [
 ];
 
 const MOBILE_IMAGES = [
-  { src: "https://picsum.photos/seed/unym1/400/860", alt: "Unytick app home" },
+  { src: "/projects/unytick/unytickMobile1.jpg", alt: "Unytick app home" },
   {
-    src: "https://picsum.photos/seed/unym2/400/860",
-    alt: "Unytick app mis tickets",
-  },
-  {
-    src: "https://picsum.photos/seed/unym3/400/860",
+    src: "/projects/unytick/unytickMobile3.gif",
     alt: "Unytick app scanner QR",
   },
   {
-    src: "https://picsum.photos/seed/unym4/400/860",
-    alt: "Unytick app perfil",
+    src: "/projects/unytick/unytickMobile2.jpg",
+    alt: "Unytick app mis tickets",
   },
   {
-    src: "https://picsum.photos/seed/unym5/400/860",
-    alt: "Unytick app historial",
-  },
-  {
-    src: "https://picsum.photos/seed/unym6/400/860",
+    src: "/projects/unytick/unytickMobile6.gif",
     alt: "Unytick app notificaciones",
   },
   {
-    src: "https://picsum.photos/seed/unym7/400/860",
+    src: "/projects/unytick/unytickMobile4.jpg",
+    alt: "Unytick app perfil",
+  },
+
+  {
+    src: "/projects/unytick/unytickMobile7.gif",
     alt: "Unytick app recarga",
   },
-  { src: "https://picsum.photos/seed/unym8/400/860", alt: "Unytick app login" },
+  {
+    src: "/projects/unytick/unytickMobile5.jpg",
+    alt: "Unytick app historial",
+  },
+  { src: "/projects/unytick/unytickMobile8.gif", alt: "Unytick app login" },
 ];
 
 export function UnytickProject() {
