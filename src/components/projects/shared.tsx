@@ -9,40 +9,68 @@ if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
 // ─── Tech icon map — devicons CDN ─────────────────────────────────────────────
 const TECH_ICONS: Record<string, string> = {
-  "React":              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "React Native":       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "Next.js":            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-  "TypeScript":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  "JavaScript":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "Tailwind CSS":       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-  "TailwindCSS":        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-  "GSAP":               "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gsap/gsap-original.svg",
-  "Framer Motion":      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
-  "Node.js":            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  "Firebase":           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-  "Git":                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  "Figma":              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-  "Java":               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-  "Vite":               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
-  "Expo":               "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg",
-  "Zustand":            "https://raw.githubusercontent.com/pmndrs/zustand/main/examples/demo/public/icon.png",
-  "JWT":                "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jsonwebtokens/jsonwebtokens-original.svg",
-  "REST APIs":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
-  "PokéAPI":            "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png",
-  "Three.js":           "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg",
-  "React Three Fiber":  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "SCSS/Sass":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
-  "Swing":              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  React:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "React Native":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Next.js":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  TypeScript:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  JavaScript:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "Tailwind CSS":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  TailwindCSS:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  GSAP: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gsap/gsap-original.svg",
+  "Framer Motion":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+  "Node.js":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  Firebase:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  Figma:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+  Java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  Vite: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+  Expo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg",
+  Zustand:
+    "https://raw.githubusercontent.com/pmndrs/zustand/main/examples/demo/public/icon.png",
+  JWT: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jsonwebtokens/jsonwebtokens-original.svg",
+  "REST APIs":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+  PokéAPI:
+    "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png",
+  "Three.js":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg",
+  "React Three Fiber":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "SCSS/Sass":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
+  Swing:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  Vercel: "https://cdn.worldvectorlogo.com/logos/vercel.svg",
 };
 
 // ─── Tech Carousel con iconos ─────────────────────────────────────────────────
-export function TechCarousel({ techs, color }: { techs: string[]; color: string }) {
+export function TechCarousel({
+  techs,
+  color,
+}: {
+  techs: string[];
+  color: string;
+}) {
   const items = [...techs, ...techs, ...techs];
 
   return (
     <div
       className="relative overflow-hidden py-5"
-      style={{ maskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)" }}
+      style={{
+        maskImage:
+          "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)",
+      }}
     >
       <motion.div
         className="flex gap-4 w-max"
@@ -68,7 +96,10 @@ export function TechCarousel({ techs, color }: { techs: string[]; color: string 
                 style={{ filter: "drop-shadow(0 0 4px rgba(255,255,255,0.1))" }}
               />
             )}
-            <span className="text-sm font-mono whitespace-nowrap" style={{ color: `${color}cc` }}>
+            <span
+              className="text-sm font-mono whitespace-nowrap"
+              style={{ color: `${color}cc` }}
+            >
               {tech}
             </span>
           </div>
@@ -78,7 +109,40 @@ export function TechCarousel({ techs, color }: { techs: string[]; color: string 
   );
 }
 
-// ─── Parallax Pinterest Grid ──────────────────────────────────────────────────
+const GridCol = ({
+  refs,
+  imgs,
+  offset = false,
+  color,
+}: {
+  refs: React.RefObject<HTMLDivElement | null>;
+  imgs: { src: string; alt: string }[];
+  offset?: boolean;
+  color: string;
+}) => (
+  <div ref={refs} className={`flex flex-col gap-3 ${offset ? "mt-10" : ""}`}>
+    {imgs.map((img, i) => (
+      <div
+        key={i}
+        className="rounded-2xl overflow-hidden relative group "
+        style={{ border: `1px solid ${color}20` }}
+      >
+        <img
+          src={img.src}
+          alt={img.alt}
+          className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: `linear-gradient(to top, ${color}30, transparent)`,
+          }}
+        />
+      </div>
+    ))}
+  </div>
+);
+
 export function ParallaxGrid({
   images,
   color,
@@ -86,114 +150,174 @@ export function ParallaxGrid({
   images: { src: string; alt: string }[];
   color: string;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const col1Ref = useRef<HTMLDivElement>(null);
   const col2Ref = useRef<HTMLDivElement>(null);
   const col3Ref = useRef<HTMLDivElement>(null);
 
-  // Distribuir en 3 columnas
   const col1 = images.filter((_, i) => i % 3 === 0);
   const col2 = images.filter((_, i) => i % 3 === 1);
   const col3 = images.filter((_, i) => i % 3 === 2);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container || !col1Ref.current || !col2Ref.current || !col3Ref.current) return;
+    const wrapper = wrapperRef.current;
+    const sticky = stickyRef.current;
+    const c1 = col1Ref.current;
+    const c2 = col2Ref.current;
+    const c3 = col3Ref.current;
+    if (!wrapper || !sticky || !c1 || !c2 || !c3) return;
 
-    const ctx = gsap.context(() => {
-      // Col 1: sube
-      gsap.to(col1Ref.current, {
-        y: -100,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
+    let ctx: gsap.Context | null = null;
+
+    const init = () => {
+      // Limpiar cualquier ScrollTrigger previo de este wrapper
+      ScrollTrigger.getAll()
+        .filter((st) => st.vars.trigger === wrapper)
+        .forEach((st) => st.kill());
+
+      if (ctx) ctx.revert();
+
+      const viewH = sticky.offsetHeight;
+      const overflow1 = Math.max(0, c1.offsetHeight - viewH);
+      const overflow2 = Math.max(0, c2.offsetHeight - viewH);
+      const overflow3 = Math.max(0, c3.offsetHeight - viewH);
+      const maxOverflow = Math.max(overflow1, overflow2, overflow3);
+
+      wrapper.style.height = `${viewH + maxOverflow}px`;
+
+      ctx = gsap.context(() => {
+        const triggerConfig = {
+          trigger: wrapper,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.2,
+        };
+
+        if (overflow1 > 0)
+          gsap.fromTo(
+            c1,
+            { y: 0 },
+            { y: -overflow1, ease: "none", scrollTrigger: triggerConfig },
+          );
+        if (overflow2 > 0)
+          gsap.fromTo(
+            c2,
+            { y: -overflow2 }, // empieza arriba (imágenes del final visibles)
+            { y: 0, ease: "none", scrollTrigger: { ...triggerConfig } },
+          );
+        if (overflow3 > 0)
+          gsap.fromTo(
+            c3,
+            { y: 0 },
+            {
+              y: -overflow3,
+              ease: "none",
+              scrollTrigger: { ...triggerConfig },
+            },
+          );
       });
-      // Col 2: baja
-      gsap.to(col2Ref.current, {
-        y: 100,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
-      // Col 3: sube menos
-      gsap.to(col3Ref.current, {
-        y: -60,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
+
+      ScrollTrigger.refresh();
+    };
+
+    // Esperar imágenes y luego un frame extra para que el layout esté estable
+    const imgs = [...wrapper.querySelectorAll<HTMLImageElement>("img")];
+    const loads = imgs.map((img) =>
+      img.complete
+        ? Promise.resolve()
+        : new Promise<void>((r) => {
+            img.onload = () => r();
+            img.onerror = () => r();
+          }),
+    );
+
+    Promise.all(loads).then(() => {
+      // requestAnimationFrame doble para asegurar que el DOM pintó
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          init();
+        });
       });
     });
 
-    return () => ctx.revert();
+    // Agregar resize listener
+    const onResize = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          init();
+        });
+      });
+    };
+
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ctx?.revert();
+      ScrollTrigger.getAll()
+        .filter((st) => st.vars.trigger === wrapper)
+        .forEach((st) => st.kill());
+    };
   }, []);
 
-  const GridCol = ({
-    ref,
-    imgs,
-    offset = false,
-  }: {
-    ref: React.RefObject<HTMLDivElement | null>;
-    imgs: { src: string; alt: string }[];
-    offset?: boolean;
-  }) => (
-    <div ref={ref} className={`flex flex-col gap-3 ${offset ? "mt-10" : ""}`}>
-      {imgs.map((img, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, delay: i * 0.08 }}
-          className="rounded-2xl overflow-hidden relative group"
-          style={{ border: `1px solid ${color}20` }}
-        >
-          <img
-            src={img.src}
-            alt={img.alt}
-            className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-          <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            style={{ background: `linear-gradient(to top, ${color}30, transparent)` }}
-          />
-        </motion.div>
-      ))}
-    </div>
-  );
-
   return (
-    <div ref={containerRef} className="grid grid-cols-3 gap-3 overflow-hidden">
-      <GridCol ref={col1Ref} imgs={col1} />
-      <GridCol ref={col2Ref} imgs={col2} offset />
-      <GridCol ref={col3Ref} imgs={col3} />
+    <div ref={wrapperRef} style={{ position: "relative", minHeight: "100vh" }}>
+      <div
+        ref={stickyRef}
+        style={{
+          position: "sticky",
+          top: "60px", // espacio para el navbar
+          height: "calc(100vh - 30px - 40px)", // navbar arriba + margen abajo
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "flex-start",
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
+          boxSizing: "border-box",
+          // Máscaras de degradado arriba y abajo
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+        }}
+      >
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 w-full">
+          <GridCol refs={col1Ref} imgs={col1} color={color} />
+          <GridCol refs={col2Ref} imgs={col2} offset color={color} />
+          <GridCol refs={col3Ref} imgs={col3} color={color} />
+        </div>
+      </div>
     </div>
   );
 }
-
 // ─── Project Hero header ──────────────────────────────────────────────────────
 export function ProjectHero({
-  number, title, tagline, description, color, category, url, repo,
+  number,
+  title,
+  tagline,
+  description,
+  color,
+  category,
+  url,
+  repo,
 }: {
-  number: string; title: string; tagline: string; description: string;
-  color: string; category: string; url?: string; repo?: string;
+  number: string;
+  title: string;
+  tagline: string;
+  description: string;
+  color: string;
+  category: string;
+  url?: string;
+  repo?: string;
 }) {
   return (
-    <div className="min-h-screen flex flex-col justify-center relative overflow-hidden py-32">
+    <div className="min-h-screen flex flex-col justify-center relative overflow-hidden py-32 backdrop-blur-xs">
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse 70% 60% at 20% 50%, ${color}07, transparent)` }}
+        style={{
+          background: `radial-gradient(ellipse 70% 60% at 20% 50%, ${color}07, transparent)`,
+        }}
       />
       <div className="container-apple relative z-10">
         {/* Número + categoría */}
@@ -204,11 +328,17 @@ export function ProjectHero({
           transition={{ duration: 0.6 }}
           className="flex items-center gap-4 mb-8"
         >
-          <span className="font-mono text-xs tracking-widest uppercase" style={{ color: `${color}70` }}>
+          <span
+            className="font-mono text-xs tracking-widest uppercase"
+            style={{ color: `${color}70` }}
+          >
             {number}
           </span>
           <div className="h-px w-12" style={{ background: `${color}40` }} />
-          <span className="font-mono text-xs tracking-widest uppercase" style={{ color: `${color}70` }}>
+          <span
+            className="font-mono text-xs tracking-widest uppercase"
+            style={{ color: `${color}70` }}
+          >
             {category}
           </span>
         </motion.div>
@@ -253,19 +383,29 @@ export function ProjectHero({
             >
               {url && url !== "#" && (
                 <a
-                  href={url} target="_blank" rel="noopener noreferrer"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.03]"
                   style={{ background: color, color: "#080810" }}
                 >
                   Ver proyecto
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </a>
               )}
               {repo && repo !== "#" && (
                 <a
-                  href={repo} target="_blank" rel="noopener noreferrer"
+                  href={repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.03]"
-                  style={{ border: `1px solid ${color}40`, color, background: `${color}10` }}
+                  style={{
+                    border: `1px solid ${color}40`,
+                    color,
+                    background: `${color}10`,
+                  }}
                 >
                   GitHub →
                 </a>
@@ -290,9 +430,15 @@ export function ProjectHero({
 
 // ─── What / How / Result ──────────────────────────────────────────────────────
 export function ProjectInfo({
-  what, how, result, color,
+  what,
+  how,
+  result,
+  color,
 }: {
-  what: string; how: string; result: string; color: string;
+  what: string;
+  how: string;
+  result: string;
+  color: string;
 }) {
   return (
     <div className="container-apple py-16">
@@ -311,12 +457,17 @@ export function ProjectInfo({
             className="space-y-3"
           >
             <div className="flex items-center gap-3">
-              <div className="w-1 h-5 rounded-full" style={{ background: color }} />
+              <div
+                className="w-1 h-5 rounded-full"
+                style={{ background: color }}
+              />
               <span className="font-mono text-xs uppercase tracking-widest text-text-muted">
                 {label}
               </span>
             </div>
-            <p className="text-text-secondary text-sm leading-relaxed">{text}</p>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              {text}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -334,7 +485,9 @@ export function ProjectDivider({ color }: { color: string }) {
         viewport={{ once: true }}
         transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
         className="h-full origin-left"
-        style={{ background: `linear-gradient(90deg, ${color}50, transparent)` }}
+        style={{
+          background: `linear-gradient(90deg, ${color}50, transparent)`,
+        }}
       />
     </div>
   );
@@ -342,9 +495,15 @@ export function ProjectDivider({ color }: { color: string }) {
 
 // ─── Mobile mockup frame ──────────────────────────────────────────────────────
 export function MobileFrame({
-  src, alt, color, delay = 0,
+  src,
+  alt,
+  color,
+  delay = 0,
 }: {
-  src: string; alt: string; color: string; delay?: number;
+  src: string;
+  alt: string;
+  color: string;
+  delay?: number;
 }) {
   return (
     <motion.div
@@ -356,7 +515,7 @@ export function MobileFrame({
       style={{ width: "180px" }}
     >
       <div
-        className="rounded-[2.2rem] overflow-hidden relative"
+        className="rounded-[1.2rem] overflow-hidden relative"
         style={{
           border: `2px solid ${color}35`,
           boxShadow: `0 0 40px ${color}18, 0 30px 80px rgba(0,0,0,0.6)`,

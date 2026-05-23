@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
+import { SmoothScroll } from "@/providers/SmoothScrollProvider";
 
 // ─── Fonts ─────────────────────────────────────────────────────────────────
 const syne = Syne({
@@ -74,7 +74,7 @@ export default function RootLayout({
     >
       <body>
         {/* Lenis smooth scroll wraps everything */}
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

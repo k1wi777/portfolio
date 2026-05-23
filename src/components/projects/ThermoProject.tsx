@@ -95,13 +95,13 @@ export function ThermoProject() {
         <div ref={gridRef} className="grid grid-cols-2 gap-4">
           {/* Imagen grande — col 1, span 1 row 1 */}
           <motion.div
-            style={{ y: y1 }}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="row-span-2 rounded-3xl overflow-hidden"
             style={{
+              y: y1,
               border: `1px solid ${COLOR}25`,
               boxShadow: `0 0 40px ${COLOR}10`,
               gridRow: "span 2",
@@ -125,13 +125,12 @@ export function ThermoProject() {
           {IMAGES.slice(1).map((img, i) => (
             <motion.div
               key={i}
-              style={{ y: y2 }}
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
               className="relative rounded-2xl overflow-hidden"
-              style={{ border: `1px solid ${COLOR}20` }}
+              style={{ y: y2, border: `1px solid ${COLOR}20` }}
             >
               <img src={img.src} alt={img.alt} className="w-full object-cover" />
               <div

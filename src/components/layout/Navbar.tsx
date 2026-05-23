@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { navbarVariants } from "@/lib/animations";
 
 const navLinks = [
-  { href: "#about",      label: "Sobre mí" },
-  { href: "#projects",   label: "Proyectos" },
+  { href: "#about", label: "Sobre mí" },
   { href: "#experience", label: "Experiencia" },
-  { href: "#education",  label: "Estudios" },
-  
+  { href: "#projects", label: "Proyectos" },
+  { href: "#education", label: "Estudios" },
 ];
 
 export function Navbar() {
@@ -30,9 +29,11 @@ export function Navbar() {
           if (entry.isIntersecting) setActiveSection("#" + entry.target.id);
         });
       },
-      { threshold: 0.3, rootMargin: "-80px 0px -60% 0px" }
+      { threshold: 0.3, rootMargin: "-80px 0px -60% 0px" },
     );
-    document.querySelectorAll("section[id]").forEach((s) => observer.observe(s));
+    document
+      .querySelectorAll("section[id]")
+      .forEach((s) => observer.observe(s));
     return () => observer.disconnect();
   }, []);
 
@@ -50,22 +51,26 @@ export function Navbar() {
         className="fixed top-0 left-0 right-0 z-50"
       >
         {/* Pill navbar — flota centrada en la parte superior */}
-        <div className="container-apple pt-4">
+        <div className="container-apple pt-2">
           <div
             className={`
               flex items-center justify-between
-              px-4 py-3 rounded-2xl
+              px-4 py-1 rounded-2xl
               transition-all duration-500
-              ${isScrolled
-                ? "bg-[rgba(8,8,16,0.75)] backdrop-blur-2xl border border-white/8 shadow-[0_8px_32px_rgba(0,0,0,0.4)] "
-                : "bg-transparent border border-transparent"
+              ${
+                isScrolled
+                  ? "bg-[rgba(8,8,16,0.75)] backdrop-blur-2xl border border-white/8 shadow-[0_8px_32px_rgba(0,0,0,0.4)] "
+                  : "bg-transparent border border-transparent"
               }
             `}
           >
             {/* Logo */}
             <motion.a
               href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-1 select-none"
@@ -100,10 +105,12 @@ export function Navbar() {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.96 }}
                     onHoverStart={(e) => {
-                      if (!isActive) (e.target as HTMLElement).style.color = "#f5f5f7";
+                      if (!isActive)
+                        (e.target as HTMLElement).style.color = "#f5f5f7";
                     }}
                     onHoverEnd={(e) => {
-                      if (!isActive) (e.target as HTMLElement).style.color = "#a1a1aa";
+                      if (!isActive)
+                        (e.target as HTMLElement).style.color = "#a1a1aa";
                     }}
                   >
                     {isActive && (
@@ -114,7 +121,11 @@ export function Navbar() {
                           background: "rgba(0,245,255,0.08)",
                           border: "1px solid rgba(0,245,255,0.2)",
                         }}
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
                       />
                     )}
                     <span className="relative z-10">{link.label}</span>
@@ -129,7 +140,7 @@ export function Navbar() {
                 onClick={() => handleNavClick("#contact")}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                className="relative px-5 py-2.5 rounded-xl text-sm font-semibold overflow-hidden group"
+                className="relative px-4 py-1 rounded-xl text-sm font-semibold overflow-hidden group"
                 style={{
                   background: "rgba(0,245,255,0.1)",
                   border: "1px solid rgba(0,245,255,0.35)",
@@ -159,9 +170,11 @@ export function Navbar() {
                   className="block h-[2px] w-5 rounded-full bg-[#a1a1aa] origin-center"
                   animate={
                     mobileOpen
-                      ? i === 0 ? { rotate: 45, y: 7 }
-                      : i === 1 ? { opacity: 0, scaleX: 0 }
-                      : { rotate: -45, y: -7 }
+                      ? i === 0
+                        ? { rotate: 45, y: 7 }
+                        : i === 1
+                          ? { opacity: 0, scaleX: 0 }
+                          : { rotate: -45, y: -7 }
                       : { rotate: 0, y: 0, opacity: 1, scaleX: 1 }
                   }
                   transition={{ duration: 0.25 }}
@@ -200,7 +213,10 @@ export function Navbar() {
                              transition-colors duration-200"
                   style={{
                     color: activeSection === link.href ? "#00f5ff" : "#a1a1aa",
-                    background: activeSection === link.href ? "rgba(0,245,255,0.06)" : "transparent",
+                    background:
+                      activeSection === link.href
+                        ? "rgba(0,245,255,0.06)"
+                        : "transparent",
                   }}
                 >
                   <span className="font-mono text-[10px] text-[#52525b] mr-2">

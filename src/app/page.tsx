@@ -38,8 +38,8 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
         <ExperienceSection />
+        <ProjectsSection />
         <EducationSection />
         <ContactSection />
         <Footer/>
