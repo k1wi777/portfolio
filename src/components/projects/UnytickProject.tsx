@@ -20,28 +20,34 @@ const TECH = [
   "JWT",
   "REST APIs",
   "Tailwind CSS",
-  "Zustand",
   "Node.js",
 ];
 
 const WEB_IMAGES = [
-  { src: "https://picsum.photos/seed/uny1/800/600", alt: "Unytick dashboard" },
-  { src: "https://picsum.photos/seed/uny2/800/900", alt: "Unytick tickets" },
-  { src: "https://picsum.photos/seed/uny3/800/650", alt: "Unytick validación" },
-  { src: "https://picsum.photos/seed/uny4/800/800", alt: "Unytick reportes" },
-  { src: "https://picsum.photos/seed/uny5/800/700", alt: "Unytick usuarios" },
+  { src: "/projects/unytick/unytick1.png", alt: "Unytick dashboard" },
+  { src: "/projects/unytick/unytick2.png", alt: "Unytick tickets" },
+  { src: "/projects/unytick/unytick3.png", alt: "Unytick validación" },
+  { src: "/projects/unytick/unytick4.png", alt: "Unytick reportes" },
+  { src: "/projects/unytick/unytick5.png", alt: "Unytick usuarios" },
   {
-    src: "https://picsum.photos/seed/uny6/800/600",
+    src: "/projects/unytick/unytick6.png",
     alt: "Unytick panel admin",
   },
-  { src: "https://picsum.photos/seed/uny7/800/750", alt: "Unytick historial" },
+  { src: "/projects/unytick/unytick7.png", alt: "Unytick historial" },
   {
-    src: "https://picsum.photos/seed/uny8/800/650",
+    src: "/projects/unytick/unytick8.png",
     alt: "Unytick estadísticas",
   },
   {
-    src: "https://picsum.photos/seed/uny9/800/900",
+    src: "/projects/unytick/unytick9.png",
     alt: "Unytick estadísticas",
+  },
+  { src: "/projects/unytick/unytick10.png",
+    alt: "Unytick reportes",
+  },
+  {
+    src: "/projects/unytick/unytick11.png",
+    alt: "Unytick validación",
   },
 ];
 
@@ -97,7 +103,7 @@ export function UnytickProject() {
           title="Unytick"
           category="Mobile & Web Platform"
           tagline="Gestión de tickets universitarios, reimaginada."
-          description="Plataforma digital completa para validación de tickets de transporte universitario. App mobile para estudiantes + panel web de administración con autenticación JWT."
+          description="Ecosistema digital diseñado para modernizar la gestión de tickets universitarios mediante validación en tiempo real, autenticación segura y sincronización entre aplicación móvil y panel administrativo web."
           color={COLOR}
           url="https://unytick.vercel.app"
           repo="https://github.com/Unytick-app/Unytick-app-web"
@@ -107,9 +113,9 @@ export function UnytickProject() {
       {/* Info */}
       <ProjectInfo
         color={COLOR}
-        what="Digitalizar el proceso de gestión y validación de tickets universitarios, eliminando el papel y los tiempos de espera para estudiantes y operarios del transporte."
-        how="Arquitectura dual: app React Native + Expo para estudiantes con scanner QR, y panel Next.js para administradores. JWT compartido entre ambas plataformas."
-        result="Sistema completo de compra, validación y reporte. Flujo de autenticación seguro, escaneo QR en tiempo real y dashboard con métricas de uso."
+        what="Modernizar el proceso de gestión y validación de tickets universitarios mediante una solución digital capaz de reducir tiempos de espera, eliminar procesos manuales y mejorar la experiencia tanto para estudiantes como para operadores."
+        how="Desarrollé una arquitectura multiplataforma compuesta por una aplicación móvil construida con React Native y Expo para estudiantes, junto a un panel administrativo en Next.js para gestión y monitoreo. Implementé autenticación segura con JWT, generación y validación de códigos QR en tiempo real, sincronización entre plataformas y una interfaz responsive enfocada en usabilidad."
+        result="El proyecto evolucionó en un ecosistema digital completo para compra, validación y administración de tickets universitarios, incorporando autenticación segura, escaneo QR en tiempo real, métricas de uso y una experiencia fluida tanto en dispositivos móviles como en entorno web."
       />
 
       {/* Tech carousel */}
