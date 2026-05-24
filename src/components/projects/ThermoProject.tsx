@@ -11,24 +11,19 @@ const TECH = ["Java", "Swing", "POO", "Physics Simulation", "Algorithms"];
 // 4 imágenes — formato horizontal tipo "feature showcase"
 const IMAGES = [
   {
-    src: "https://picsum.photos/seed/therm1/900/600",
+    src: "/projects/thermodinamic/javaSimulator1.gif",
     alt: "Simulador — vista general",
-    label: "Vista general",
+    label: "Partículas en movimiento",
   },
   {
-    src: "https://picsum.photos/seed/therm2/900/600",
+    src: "/projects/thermodinamic/javaSimulator2.png",
     alt: "Gráfica PV",
-    label: "Diagrama P-V",
+    label: "vista principal",
   },
   {
-    src: "https://picsum.photos/seed/therm3/900/600",
+    src: "/projects/thermodinamic/javaSimulator5.png",
     alt: "Partículas en movimiento",
-    label: "Partículas",
-  },
-  {
-    src: "https://picsum.photos/seed/therm4/900/600",
-    alt: "Panel de control",
-    label: "Controles",
+    label: "Banner",
   },
 ];
 
@@ -36,7 +31,7 @@ const IMAGES = [
 const STATS = [
   { value: "3", label: "Procesos\nTermodinámicos" },
   { value: "N→∞", label: "Partículas\nsimuladas" },
-    { value: "Swing", label: "Render\nGráfico" },
+  { value: "Swing", label: "Render\nGráfico" },
   { value: "Java", label: "Motor de\nSimulación" },
 ];
 
@@ -67,7 +62,7 @@ export function ThermoProject() {
       <ProjectInfo
         color={COLOR}
         what="Crear una simulación visual capaz de modelar el comportamiento de un gas bajo diferentes procesos termodinámicos utilizando principios físicos reales."
-         how="Construí un motor de simulación en Java utilizando Swing para la interfaz gráfica y algoritmos basados en ecuaciones termodinámicas para calcular distinas variables y movimiento de partículas en tiempo real. Implementé renderizado dinámico frame a frame, control de procesos isotérmicos, adiabáticos e isocóricos, además de representación visual de colisiones y cambios energéticos."
+        how="Construí un motor de simulación en Java utilizando Swing para la interfaz gráfica y algoritmos basados en ecuaciones termodinámicas para calcular distinas variables y movimiento de partículas en tiempo real. Implementé renderizado dinámico frame a frame, control de procesos isotérmicos, adiabáticos e isocóricos, además de representación visual de colisiones y cambios energéticos."
         result="El resultado fue un simulador termodinámico funcional con visualización científica en tiempo real, comportamiento dinámico de partículas y herramientas interactivas para explorar distintos escenarios físicos."
       />
 
@@ -112,14 +107,14 @@ export function ThermoProject() {
         </div>
 
         {/* 4 imágenes — layout especial: grande arriba izq + 3 abajo */}
-        <div ref={gridRef} className="grid grid-cols-2 gap-4">
+        <div ref={gridRef} className="grid grid-cols-2 gap-4 gap-y-15">
           {/* Imagen grande — col 1, span 1 row 1 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="row-span-2 rounded-3xl overflow-hidden"
+            className="row-span-2 rounded-3xl overflow-hidden group"
             style={{
               y: y1,
               border: `1px solid ${COLOR}25`,
@@ -130,11 +125,16 @@ export function ThermoProject() {
             <img
               src={IMAGES[0].src}
               alt={IMAGES[0].alt}
-              className="w-full h-full object-cover"
-              style={{ minHeight: "400px" }}
+              className="w-full  object-contain group-hover:scale-105 transition-transform duration-700"
             />
             <div
-              className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg font-mono text-xs"
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                background: `linear-gradient(to top, ${COLOR}20, transparent)`,
+              }}
+            />
+            <div
+              className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg font-mono text-xs backdrop-blur-sm"
               style={{
                 background: `${COLOR}20`,
                 color: COLOR,
@@ -153,16 +153,22 @@ export function ThermoProject() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="relative rounded-2xl overflow-hidden"
+              className="relative rounded-2xl overflow-hidden group"
               style={{ y: y2, border: `1px solid ${COLOR}20` }}
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div
-                className="absolute bottom-3 left-3 px-3 py-1 rounded-lg font-mono text-xs"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: `linear-gradient(to top, ${COLOR}50, transparent)`,
+                }}
+              />
+              <div
+                className="absolute bottom-3 left-3 px-3 py-1 rounded-lg font-mono text-xs backdrop-blur-sm"
                 style={{
                   background: `${COLOR}20`,
                   color: COLOR,
