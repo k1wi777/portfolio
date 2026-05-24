@@ -120,7 +120,7 @@ export function ExperienceSection() {
         {/* Timeline */}
         <div className="relative">
           {/* Línea vertical */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-neon-cyan/30 via-neon-blue/20 to-transparent" />
+          <div className="absolute left-0 md:left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gradient-to-b from-neon-cyan/30 via-neon-blue/20 to-transparent" />
 
           <div className="space-y-12">
             {experiences.map((exp, i) => (

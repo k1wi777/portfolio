@@ -10,7 +10,6 @@ import { ProjectDivider } from "@/components/projects/shared";
 export function ProjectsSection() {
   return (
     <section id="projects" className="relative">
-
       {/* Header de sección */}
       <div className="container-apple pt-32 pb-20">
         <motion.p
@@ -28,7 +27,9 @@ export function ProjectsSection() {
           transition={{ delay: 0.1 }}
           className="font-display text-5xl md:text-6xl font-bold text-text-primary mb-4"
         >
-          Proyectos destacados
+          Proyectos que mezclan
+  <br />
+  ingeniería y experiencia.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +38,11 @@ export function ProjectsSection() {
           transition={{ delay: 0.2 }}
           className="text-text-secondary text-lg max-w-xl"
         >
-          Cada proyecto es una historia — un problema, un enfoque y un resultado.
+          Desde plataformas web y aplicaciones móviles hasta simulaciones
+          interactivas, cada proyecto fue desarrollado con enfoque en
+          rendimiento, arquitectura y experiencia de usuario.
+          <br /><br />
+          A continuación...
         </motion.p>
       </div>
 
@@ -54,7 +59,7 @@ export function ProjectsSection() {
       <ThermoProject />
 
       {/* Footer */}
-      <div className="container-apple py-20 text-center">
+      <div className="container-apple py-20 text-center ">
         <motion.a
           href="https://github.com/k1wi777"
           target="_blank"
@@ -62,11 +67,15 @@ export function ProjectsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-neon-cyan
-                     font-medium transition-colors duration-200 group text-sm font-mono"
+          className="inline-flex items-center gap-2  text-text-secondary hover:text-neon-cyan 
+                     font-medium transition-colors duration-200 group text-sm font-mono relative pb-1"
         >
           Ver más proyectos en GitHub
-          <span className="group-hover:translate-x-1 transition-transform">→</span>
+          <span className="group-hover:translate-x-1 transition-transform">
+            →
+          </span>
+          <div className="absolute bottom-0 w-0 h-px transition-all duration-500 group-hover:w-full bg-neon-cyan"></div>
+          
         </motion.a>
       </div>
     </section>

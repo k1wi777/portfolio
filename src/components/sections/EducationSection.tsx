@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useAnimations";
 import { staggerContainer, fadeUp, scaleIn } from "@/lib/animations";
+import Image from "next/image";
 
 const education = [
   {
@@ -75,9 +76,13 @@ export function EducationSection() {
               key={i}
               variants={scaleIn}
               className="glass rounded-3xl p-7 border border-white/5 hover:border-white/10
-                         transition-all duration-300 group"
+                         transition-all duration-300 group relative overflow-hidden"
               whileHover={{ y: -4 }}
             >
+             
+              <Image width={200} height={200} src={ edu.institution === "Universidad de Córdoba" ?"/Escudo_Universidad_de_Córdoba.png": "/react-logo.png" } alt="escudo Universidad de Córdoba"
+              className="absolute -z-10 opacity-4 w-[80%] object-contain top-2 -right-2 scale-110 transition-transform duration-500  rotate-15"
+              />
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
                 style={{
