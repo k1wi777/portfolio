@@ -107,33 +107,38 @@ export function AboutSection() {
             variants={fadeRight}
             className="flex flex-col items-center gap-8"
           >
-            
+            {/* Foto */}
+            <div className="relative w-64 md:w-85 group">
+              {/* Anillo exterior */}
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-cyan/40 via-purple-500/20 to-neon-blue/40 opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
 
-{/* Foto */}
-<div className="relative w-64 md:w-85 group">
-  {/* Anillo exterior */}
-  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-cyan/40 via-purple-500/20 to-neon-blue/40 opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
-
-  <div className="relative w-full aspect-square rounded-full overflow-hidden
+              <div
+                className="relative w-full aspect-square rounded-full overflow-hidden
                   border border-white/10
                   drop-shadow-[0_0_35px_rgba(122,85,190,0.50)]
                   group-hover:drop-shadow-[0_0_55px_rgba(122,85,190,0.80)]
                   
-                  transition-all duration-500 ease-out">
-    <Image
-      src="/avatar/foto_jose_padilla.png"
-      alt="Foto de José Padilla"
-      fill
-      sizes="(max-width: 768px) 256px, 340px"
-      className="object-cover object-top pointer-events-none group-hover:scale-[1.03] transition-transform duration-250 "
-      priority
-      unoptimized
-    />
-  </div>
+                  transition-all duration-500 ease-out"
+              >
+                <span
+                  className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%]
+                             bg-gradient-to-r from-transparent via-white/10 to-transparent
+                             transition-transform duration-600 z-20"
+                />
+                <Image
+                  src="/avatar/foto_jose_padilla.png"
+                  alt="Foto de José Padilla"
+                  fill
+                  sizes="(max-width: 768px) 256px, 340px"
+                  className="object-cover object-top pointer-events-none group-hover:scale-[1.03] transition-transform duration-250 "
+                  priority
+                  unoptimized
+                />
+              </div>
 
-  {/* Vignette overlay */}
-  <div className="absolute inset-0 rounded-full shadow-[inset_0_0_60px_rgba(35,14,79,0.6)] pointer-events-none" />
-</div>
+              {/* Vignette overlay */}
+              <div className="absolute inset-0 rounded-full shadow-[inset_0_0_60px_rgba(35,14,79,0.6)] pointer-events-none" />
+            </div>
 
             {/* Skills */}
             <div className="w-full space-y-3">
