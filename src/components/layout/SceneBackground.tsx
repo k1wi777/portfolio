@@ -270,7 +270,7 @@ export function SceneBackground() {
     <div
       aria-hidden
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-      style={{ width: "100%", maxWidth: "100vw" }}
+      style={{ width: "100%" }}
     >
       <Canvas
         camera={{ position: [0, 0, 8], fov: isMobile ? 55 : 50 }}

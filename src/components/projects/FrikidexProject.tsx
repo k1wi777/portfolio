@@ -76,7 +76,7 @@ export function FrikidexProject() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative w-full "
+        className="relative w-full overflow-x-clip"
       >
         <Image
           src="/projects/frikidex/banner1.png"

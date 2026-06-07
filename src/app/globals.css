@@ -59,7 +59,12 @@
 
 /* ─── Base Reset ────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+}
 
 body {
   background-color: var(--bg-primary);
@@ -67,7 +72,10 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -81,7 +89,12 @@ p { line-height: 1.7; }
 code, pre { font-family: var(--font-mono); }
 
 /* ─── Lenis ─────────────────────────────────────────────────────────────── */
-html.lenis, html.lenis body { height: auto; }
+html.lenis,
+html.lenis body {
+  height: auto;
+  overflow-x: clip;
+  max-width: 100%;
+}
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }

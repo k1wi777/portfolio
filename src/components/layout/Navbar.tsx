@@ -48,14 +48,15 @@ export function Navbar() {
         variants={navbarVariants}
         initial="hidden"
         animate="visible"
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 left-0 right-0 z-50 w-full max-w-full overflow-x-clip"
       >
         {/* Pill navbar — flota centrada en la parte superior */}
-        <div className="container-apple pt-2">
+        <div className="container-apple pt-2 max-w-full">
           <div
             className={`
-              flex items-center justify-between
-              px-4 py-1 rounded-2xl
+              flex items-center justify-between gap-2
+              min-w-0 max-w-full overflow-hidden
+              px-3 sm:px-4 py-1 rounded-2xl
               transition-all duration-500
               ${
                 isScrolled
@@ -73,10 +74,10 @@ export function Navbar() {
               }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-1 select-none"
+              className="flex items-center gap-1 select-none min-w-0 shrink"
             >
               <span
-                className="font-display font-bold text-xl"
+                className="font-display font-bold text-sm sm:text-xl truncate"
                 style={{
                   background: "linear-gradient(135deg, #00f5ff, #0080ff)",
                   WebkitBackgroundClip: "text",
@@ -84,9 +85,10 @@ export function Navbar() {
                   backgroundClip: "text",
                 }}
               >
-                JOSÉ PADILLA
+                <span className="hidden min-[400px]:inline">JOSÉ PADILLA</span>
+                <span className="min-[400px]:hidden">J. PADILLA</span>
               </span>
-              <span className="text-[#52525b] font-mono text-xs">.dev</span>
+              <span className="text-[#52525b] font-mono text-xs shrink-0">.dev</span>
             </motion.a>
 
             {/* Links — Desktop */}
@@ -159,7 +161,7 @@ export function Navbar() {
 
             {/* Hamburger — Mobile */}
             <motion.button
-              className="md:hidden flex flex-col justify-center gap-[5px] p-2 rounded-lg"
+              className="md:hidden flex flex-col justify-center gap-[5px] p-2 rounded-lg shrink-0"
               onClick={() => setMobileOpen(!mobileOpen)}
               whileTap={{ scale: 0.9 }}
               aria-label="Menú"

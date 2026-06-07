@@ -25,9 +25,27 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     gsap.ticker.lagSmoothing(0);
 
+    // Bloquear scroll horizontal a nivel de página
+    const lockHorizontalScroll = () => {
+      if (window.scrollX !== 0) {
+        window.scrollTo(0, window.scrollY);
+      }
+    };
+
+    const blockHorizontalWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("scroll", lockHorizontalScroll, { passive: true });
+    window.addEventListener("wheel", blockHorizontalWheel, { passive: false });
+
     return () => {
       lenis.destroy();
       gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      window.removeEventListener("scroll", lockHorizontalScroll);
+      window.removeEventListener("wheel", blockHorizontalWheel);
     };
   }, []);
 

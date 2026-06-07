@@ -293,6 +293,7 @@ export function ParallaxGrid({
 export function ProjectHero({
   number,
   title,
+  titleMobile,
   tagline,
   description,
   color,
@@ -302,6 +303,7 @@ export function ProjectHero({
 }: {
   number: string;
   title: string;
+  titleMobile?: string;
   tagline: string;
   description: string;
   color: string;
@@ -310,55 +312,58 @@ export function ProjectHero({
   repo?: string;
 }) {
   return (
-    <div className="min-h-screen flex flex-col justify-center relative overflow-hidden py-32 backdrop-blur-xs">
+    <div className="min-h-screen flex flex-col justify-center relative overflow-x-clip py-32 backdrop-blur-xs">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: `radial-gradient(ellipse 70% 60% at 20% 50%, ${color}07, transparent)`,
         }}
       />
-      <div className="container-apple relative z-10">
+      <div className="container-apple relative z-10 min-w-0 max-w-full">
         {/* Número + categoría */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-8"
+          className="flex items-center gap-4 mb-8 flex-wrap min-w-0"
         >
           <span
-            className="font-mono text-xs tracking-widest uppercase"
+            className="font-mono text-xs tracking-widest uppercase shrink-0"
             style={{ color: `${color}70` }}
           >
             {number}
           </span>
-          <div className="h-px w-12" style={{ background: `${color}40` }} />
+          <div className="h-px w-12 shrink-0" style={{ background: `${color}40` }} />
           <span
-            className="font-mono text-xs tracking-widest uppercase"
+            className="font-mono text-xs tracking-widest uppercase break-words"
             style={{ color: `${color}70` }}
           >
             {category}
           </span>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
+        <div className="grid md:grid-cols-2 gap-16 items-center min-w-0">
+          <div className="min-w-0 max-w-full">
             <motion.h2
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-display font-extrabold leading-none mb-5 whitespace-pre-line"
-              style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", color }}
+              className="font-display font-extrabold leading-[0.95] mb-5 max-w-full"
+              style={{ fontSize: "clamp(2rem, 10vw, 6.5rem)", color }}
             >
-              {title}
+              <span className="md:hidden block whitespace-pre-line break-words">
+                {titleMobile ?? title}
+              </span>
+              <span className="hidden md:block whitespace-pre-line">{title}</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl font-light mb-5"
+              className="text-lg sm:text-xl font-light mb-5 break-words max-w-full"
               style={{ color: `${color}bb` }}
             >
               {tagline}
@@ -368,7 +373,7 @@ export function ProjectHero({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-text-secondary text-base leading-relaxed mb-8 max-w-md"
+              className="text-text-secondary text-base leading-relaxed mb-8 max-w-full md:max-w-md break-words"
             >
               {description}
             </motion.p>

@@ -47,10 +47,11 @@ export function ThermoProject() {
   const y2 = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <div id="project-thermo">
+    <div id="project-thermo" className="min-w-0 max-w-full overflow-x-clip">
       <ProjectHero
         number="04"
         title={"Thermodynamic\nSimulator"}
+        titleMobile={"Thermo\nDynamic\nSimulator"}
         category="Desktop · Java"
         tagline="Física en movimiento, en tiempo real."
         description="Simulador termodinámico interactivo desarrollado para representar visualmente el comportamiento de partículas y variables físicas mediante procesos dinámicos en tiempo real basados en las leyes de los gases ideales."

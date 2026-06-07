@@ -30,11 +30,11 @@ export function ContactSection() {
   const { ref, controls } = useScrollReveal(0.1);
 
   return (
-    <section id="contact" className="section-padding relative">
+    <section id="contact" className="section-padding relative overflow-x-clip">
       {/* Glow background */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px]
                         bg-neon-cyan/5 blur-[100px] rounded-full"
         />
       </div>
