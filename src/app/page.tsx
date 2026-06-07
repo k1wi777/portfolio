@@ -10,7 +10,7 @@ import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <main>
       {/* Fondo 3D global — fixed detrás de todo */}
       <SceneBackground />
 

@@ -61,7 +61,7 @@ function CodeCard({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay }}
-      className="rounded-2xl overflow-hidden"
+      className="rounded-2xl overflow-hidden w-full min-w-0 max-w-full"
       style={{
         background: "#080810",
         border: `1px solid ${accentColor}20`,
@@ -70,16 +70,18 @@ function CodeCard({
     >
       {/* Titlebar */}
       <div
-        className="flex items-center gap-2 px-4 py-3"
+        className="flex items-center gap-2 px-3 sm:px-4 py-3 min-w-0"
         style={{ borderBottom: `1px solid ${accentColor}12`, background: "#06060e" }}
       >
-        {["#ff375f", "#ffcc00", "#30d158"].map((c) => (
-          <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
-        ))}
+        <div className="flex items-center gap-2 shrink-0">
+          {["#ff375f", "#ffcc00", "#30d158"].map((c) => (
+            <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
+          ))}
+        </div>
         {/* Tabs decorativas */}
-        <div className="flex items-center gap-1 ml-4">
+        <div className="flex items-center gap-1 ml-2 sm:ml-4 min-w-0 flex-1">
           <span
-            className="px-3 py-1 rounded-t text-xs font-mono"
+            className="px-2 sm:px-3 py-1 rounded-t text-[10px] sm:text-xs font-mono truncate max-w-[140px] sm:max-w-none"
             style={{
               background: `${accentColor}12`,
               color: accentColor,
@@ -90,18 +92,18 @@ function CodeCard({
           </span>
         </div>
         {/* Línea de estado git decorativa */}
-        <div className="ml-auto flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2 shrink-0">
           <span className="text-[10px] font-mono" style={{ color: "#30d15870" }}>● main</span>
           <span className="text-[10px] font-mono" style={{ color: "#52525b" }}>TypeScript</span>
         </div>
       </div>
 
       {/* Números de línea + código */}
-      <div className="flex overflow-x-auto">
+      <div className="flex overflow-x-auto max-w-full overscroll-x-contain">
         {/* Líneas */}
         <div
-          className="select-none pt-4 pb-4 pl-3 pr-3 text-right"
-          style={{ color: "#2a2a3a", fontSize: "11px", lineHeight: "1.75", minWidth: "40px", borderRight: `1px solid ${accentColor}08` }}
+          className="select-none pt-4 pb-4 pl-3 pr-3 text-right shrink-0"
+          style={{ color: "#2a2a3a", fontSize: "11px", lineHeight: "1.75", minWidth: "32px", borderRight: `1px solid ${accentColor}08` }}
         >
           {code.split("\n").map((_, i) => (
             <div key={i}>{i + 1}</div>
@@ -110,7 +112,7 @@ function CodeCard({
 
         {/* Código */}
         <pre
-          className="p-4 text-[10px] leading-5 font-mono flex-1 overflow-x-auto"
+          className="p-3 sm:p-4 text-[10px] leading-5 font-mono flex-1 min-w-0 overflow-x-auto whitespace-pre"
           style={{ color: "#a1a1aa" }}
         >
           <code
@@ -201,7 +203,7 @@ export function PortfolioProject() {
       </div>
 
       {/* Layout: dos editor cards a la izquierda + previews a la derecha */}
-      <div ref={codeRef} className="container-apple py-24">
+      <div ref={codeRef} className="container-apple py-24 min-w-0 max-w-full overflow-x-hidden">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -212,11 +214,11 @@ export function PortfolioProject() {
           — bajo el capó
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+        <div className="grid md:grid-cols-2 gap-10 items-start min-w-0">
 
           {/* Columna izquierda — dos editor cards con parallax */}
-          <div className="flex flex-col gap-1">
-            <motion.div style={{ y: y1 }}>
+          <div className="flex flex-col gap-6 min-w-0 max-w-full">
+            <motion.div style={{ y: y1 }} className="min-w-0 max-w-full">
               <CodeCard
                 filename="useStoryScroll.ts"
                 code={SNIPPET_SCROLL}
@@ -224,7 +226,7 @@ export function PortfolioProject() {
                 delay={0}
               />
             </motion.div>
-            <motion.div style={{ y: y2 }}>
+            <motion.div style={{ y: y2 }} className="min-w-0 max-w-full">
               <CodeCard
                 filename="SceneBackground.tsx"
                 code={SNIPPET_SPHERE}
@@ -235,7 +237,7 @@ export function PortfolioProject() {
           </div>
 
           {/* Columna derecha — previews apiladas con offset */}
-          <div className="flex flex-col gap-4 pt-6">
+          <div className="flex flex-col gap-4 pt-0 md:pt-6 min-w-0 max-w-full">
             {PREVIEWS.map((img, i) => (
               <motion.div
                 key={i}
@@ -243,17 +245,18 @@ export function PortfolioProject() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="rounded-2xl overflow-hidden group"
+                className={`rounded-2xl overflow-hidden group w-full max-w-full min-w-0 ${
+                  i === 1 ? "md:ml-5" : i === 2 ? "md:ml-10" : ""
+                }`}
                 style={{
                   border: `1px solid ${COLOR}20`,
                   boxShadow: `0 8px 40px rgba(0,0,0,0.4)`,
-                  marginLeft: `${i * 20}px`,
                 }}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full max-w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </motion.div>
             ))}
