@@ -95,7 +95,13 @@ function MouseParticles() {
 }
 
 // ─── Esfera que reacciona al scroll global ────────────────────────────────────
-function ScrollSphere({ scrollProgress }: { scrollProgress: number }) {
+function ScrollSphere({
+  scrollProgress,
+  isMobile,
+}: {
+  scrollProgress: number;
+  isMobile: boolean;
+}) {
   const meshRef = useRef<THREE.Mesh>(null);
   const ring1 = useRef<THREE.Mesh>(null);
   const ring2 = useRef<THREE.Mesh>(null);
@@ -123,8 +129,9 @@ function ScrollSphere({ scrollProgress }: { scrollProgress: number }) {
     if (!groupRef.current || !meshRef.current) return;
 
     // ── Posición del grupo según scroll ──
-    const x = Math.sin(sp * Math.PI * 1.5) * 3;
-    const y = Math.cos(sp * Math.PI) * 1.5;
+    const xRange = isMobile ? 1.2 : 3;
+    const x = Math.sin(sp * Math.PI * 1.5) * xRange;
+    const y = Math.cos(sp * Math.PI) * (isMobile ? 1 : 1.5);
     groupRef.current.position.x = x + lerpMouse.current.x * 0.3;
     groupRef.current.position.y = y + lerpMouse.current.y * 0.3;
 
@@ -168,8 +175,11 @@ function ScrollSphere({ scrollProgress }: { scrollProgress: number }) {
     }
   });
 
+  const baseX = isMobile ? 0 : 2.5;
+  const baseY = isMobile ? -0.3 : 0;
+
   return (
-    <group ref={groupRef} position={[2.5, 0, 0]}>
+    <group ref={groupRef} position={[baseX, baseY, 0]}>
       {/* Esfera principal */}
       <mesh ref={meshRef}>
         <sphereGeometry args={[1.8, 128, 128]} />
@@ -206,7 +216,13 @@ function ScrollSphere({ scrollProgress }: { scrollProgress: number }) {
 }
 
 // ─── Escena completa ──────────────────────────────────────────────────────────
-function Scene({ scrollProgress }: { scrollProgress: number }) {
+function Scene({
+  scrollProgress,
+  isMobile,
+}: {
+  scrollProgress: number;
+  isMobile: boolean;
+}) {
   return (
     <>
       <ambientLight intensity={0.2} />
@@ -216,14 +232,14 @@ function Scene({ scrollProgress }: { scrollProgress: number }) {
       <Stars
         radius={100}
         depth={60}
-        count={4000}
+        count={isMobile ? 2000 : 4000}
         factor={3}
         saturation={0.3}
         fade
         speed={0.3}
       />
-      <ScrollSphere scrollProgress={scrollProgress} />
-      <MouseParticles />
+      <ScrollSphere scrollProgress={scrollProgress} isMobile={isMobile} />
+      {!isMobile && <MouseParticles />}
     </>
   );
 }
@@ -236,20 +252,40 @@ export function SceneBackground() {
     damping: 25,
   });
   const [scrollVal, setScrollVal] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     return smoothProgress.on("change", (v) => setScrollVal(v));
   }, [smoothProgress]);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 w-full">
+    <div
+      aria-hidden
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+      style={{ width: "100%", maxWidth: "100vw" }}
+    >
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 50 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: "transparent" }}
+        camera={{ position: [0, 0, 8], fov: isMobile ? 55 : 50 }}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
+        gl={{ antialias: !isMobile, alpha: true }}
+        style={{
+          background: "transparent",
+          width: "100%",
+          height: "100%",
+          maxWidth: "100%",
+          display: "block",
+        }}
       >
         <Suspense fallback={null}>
-          <Scene scrollProgress={scrollVal} />
+          <Scene scrollProgress={scrollVal} isMobile={isMobile} />
         </Suspense>
       </Canvas>
     </div>
